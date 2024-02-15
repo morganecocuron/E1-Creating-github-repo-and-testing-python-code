@@ -1,1 +1,41 @@
+import timeit
+import matplotlib.pyplot as plt
 
+def subsetSum(arr, n, sum):
+    # Base Cases
+    if sum == 0:
+        return True
+    if n == 0:
+        return False
+    
+    # If last element is greater than sum, then ignore it
+    if arr[n-1] > sum:
+        return subsetSum(arr, n-1, sum)
+ 
+    # check if sum can be obtained by including the last element or excluding it
+    return subsetSum(arr, n-1, sum) or subsetSum(arr, n-1, sum-arr[n-1])
+
+if __name__ == "__main__":
+    num_integers_list = list(range(1, 21))  # Number of integers from 1 to 20
+    time_taken_list = []
+    num_iterations = 10  # Number of iterations for calculating execution time
+    
+    for num_integers in num_integers_list:
+        # Generate a list of integers from 1 to num_integers
+        arr = list(range(1, num_integers + 1))
+        
+        total_time = 0
+        for _ in range(num_iterations):
+            start_time = timeit.default_timer()  # Start timer
+            subsetSum(arr, num_integers, num_integers)  # Solve subset sum problem
+            end_time = timeit.default_timer()  # End timer
+            total_time += (end_time - start_time)
+        
+        time_taken_list.append(total_time)  # Append total time to list
+
+    plt.plot(num_integers_list, time_taken_list, marker='o')
+    plt.xlabel('Number of Integers')
+    plt.ylabel('Time Taken (s)')
+    plt.title('Time Taken for Subset Sum Problem as a Function of Number of Integers')
+    plt.grid(True)
+    plt.show()
