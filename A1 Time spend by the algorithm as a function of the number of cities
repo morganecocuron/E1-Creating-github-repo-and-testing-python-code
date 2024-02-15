@@ -33,10 +33,10 @@ if __name__ == "__main__":
     s = 0
 
     for num_cities in num_cities_list:
-        # Generating a graph with fixed weights
+        
         graph = [[0, 10, 15, 20], [10, 0, 35, 25], 
                  [15, 35, 0, 30], [20, 25, 30, 0]] 
-        # Measure time for TSP
+        
         time_taken_list.append(travellingSalesmanProblem(graph[:num_cities], s))
 
     plt.plot(num_cities_list, time_taken_list, marker='o')
