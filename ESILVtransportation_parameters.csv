@@ -1,0 +1,10 @@
+Source,Destination,Supply,Demand,Cost
+A,X,30,30,4
+A,Y,0,20,6
+A,Z,0,25,5
+B,X,25,0,3
+B,Y,0,0,2
+B,Z,0,0,7
+C,X,20,0,1
+C,Y,0,0,8
+C,Z,0,0,9
